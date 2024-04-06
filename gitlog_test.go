@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	assertlib "github.com/stretchr/testify/assert"
 )
 
 func rimraf(dir string) {
@@ -82,7 +82,7 @@ func setup() func() {
 }
 
 func TestNewGitLog(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	assert.NotPanics(func() {
 		New(nil)
@@ -106,10 +106,10 @@ func TestNewGitLog(t *testing.T) {
 }
 
 func TestGitLog(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
-	clear := setup()
-	defer clear()
+	clearCallback := setup()
+	defer clearCallback()
 
 	git := New(&Config{
 		Path: ".tmp",
@@ -149,7 +149,7 @@ func TestGitLog(t *testing.T) {
 }
 
 func TestGitLogNumber(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
@@ -174,7 +174,7 @@ func TestGitLogNumber(t *testing.T) {
 }
 
 func TestGitLogMergesOnly(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
@@ -192,7 +192,7 @@ func TestGitLogMergesOnly(t *testing.T) {
 }
 
 func TestGitLogIgnoreMerges(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
@@ -210,7 +210,7 @@ func TestGitLogIgnoreMerges(t *testing.T) {
 }
 
 func TestGitLogReverse(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
@@ -241,7 +241,7 @@ func TestGitLogReverse(t *testing.T) {
 // FIXME: Time tests
 
 func TestGitLogNotFoundGitCommand(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
@@ -258,7 +258,7 @@ func TestGitLogNotFoundGitCommand(t *testing.T) {
 }
 
 func TestGitLogNotFoundPath(t *testing.T) {
-	assert := assert.New(t)
+	assert := assertlib.New(t)
 
 	clear := setup()
 	defer clear()
