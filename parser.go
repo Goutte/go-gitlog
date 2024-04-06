@@ -50,6 +50,10 @@ func (p *parser) parseCommit(str *string) *Commit {
 			commit.Subject = p.parseSubject(&content)
 		case bodyField:
 			commit.Body = p.parseBody(&content)
+		case rawBodyField:
+			commit.RawBody = p.parseRawBody(&content)
+		case noteField:
+			commit.Note = p.parseNote(&content)
 		}
 	}
 
@@ -142,4 +146,12 @@ func (p *parser) parseBody(str *string) string {
 	s = strings.Trim(s, "\"")
 	s = strings.TrimSpace(s)
 	return s
+}
+
+func (p *parser) parseRawBody(str *string) string {
+	return p.parseBody(str)
+}
+
+func (p *parser) parseNote(str *string) string {
+	return p.parseBody(str)
 }

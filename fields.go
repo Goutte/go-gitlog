@@ -43,4 +43,6 @@ type Commit struct {
 	Tag       *Tag
 	Subject   string
 	Body      string
+	RawBody   string // Both Subject and Body without stripping any newlines
+	Note      string
 }

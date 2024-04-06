@@ -15,6 +15,8 @@ const (
 	committerField = "COMMITTER"
 	subjectField   = "SUBJECT"
 	bodyField      = "BODY"
+	rawBodyField   = "RAW_BODY"
+	noteField      = "NOTE"
 	tagField       = "TAG"
 
 	hashFormat      = hashField + ":%H %h"
@@ -23,6 +25,8 @@ const (
 	committerFormat = committerField + ":%cn<%ce>[%ct]"
 	subjectFormat   = subjectField + ":%s"
 	bodyFormat      = bodyField + ":%b"
+	rawBodyFormat   = rawBodyField + ":%B"
+	noteFormat      = noteField + ":%N"
 	tagFormat       = tagField + ":%D"
 
 	separator = "@@__GIT_LOG_SEPARATOR__@@"
@@ -35,7 +39,9 @@ const (
 		committerFormat + delimiter +
 		tagFormat + delimiter +
 		subjectFormat + delimiter +
-		bodyFormat
+		bodyFormat + delimiter +
+		rawBodyFormat + delimiter +
+		noteFormat
 )
 
 // Config for getting git-log
